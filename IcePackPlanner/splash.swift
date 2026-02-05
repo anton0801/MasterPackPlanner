@@ -24,7 +24,7 @@ struct SplashView: View {
                 }
                 .scaleEffect(isAnimating ? 1.0 : 0.95)
                 
-                Text("Ice Pack Planner")
+                Text("Master Pack Planner")
                     .font(.system(size: 32, weight: .light))
                     .foregroundColor(Color(red: 0.2, green: 0.4, blue: 0.6))
             }

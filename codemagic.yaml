@@ -13,8 +13,8 @@ workflows:
         APP_STORE_CONNECT_KEY: action_time_app_key
         APP_STORE_APPLE_ID: 6758788244
         BUNDLE_ID: "com.MasterPackPlanner"
-        XCODE_PROJECT: "MasterPackPlanner.xcodeproj"
-        XCODE_SCHEME: "MasterPackPlanner"
+        XCODE_PROJECT: "IcePackPlanner.xcodeproj"
+        XCODE_SCHEME: "IcePackPlanner"
     scripts:
       - name: Clean and Resolve SPM Dependencies
         script: |
