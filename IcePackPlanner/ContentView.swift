@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  IcePackPlanner
-//
-//  Created by Stepan Yarikova on 25/1/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {

@@ -1,5 +1,7 @@
 
 import SwiftUI
+import AppsFlyerLib
+import AppTrackingTransparency
 
 // MARK: - Trip Detail View
 struct TripDetailView: View {
@@ -171,5 +173,53 @@ struct TripDetailView: View {
             editedTrip.items[index] = item
             appState.updateTrip(editedTrip)
         }
+    }
+}
+
+class TrackingFlow: NSObject, AppsFlyerLibDelegate, DeepLinkDelegate {
+    private var flow: MarketingFlow
+    
+    init(flow: MarketingFlow) {
+        self.flow = flow
+    }
+    
+    func setup() {
+        let sdk = AppsFlyerLib.shared()
+        sdk.appsFlyerDevKey = AppSettings.devKey
+        sdk.appleAppID = AppSettings.appID
+        sdk.delegate = self
+        sdk.deepLinkDelegate = self
+        sdk.isDebug = false
+    }
+    
+    func launch() {
+        if #available(iOS 14.0, *) {
+            AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: 60)
+            ATTrackingManager.requestTrackingAuthorization { status in
+                DispatchQueue.main.async {
+                    AppsFlyerLib.shared().start()
+                    UserDefaults.standard.set(status.rawValue, forKey: "att_status")
+                    UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "att_ts")
+                }
+            }
+        } else {
+            AppsFlyerLib.shared().start()
+        }
+    }
+    
+    func onConversionDataSuccess(_ data: [AnyHashable: Any]) {
+        flow.receiveMarketing(data)
+    }
+    
+    func onConversionDataFail(_ error: Error) {
+        var data: [AnyHashable: Any] = [:]
+        data["error"] = true
+        data["error_info"] = error.localizedDescription
+        flow.receiveMarketing(data)
+    }
+    
+    func didResolveDeepLink(_ result: DeepLinkResult) {
+        guard case .found = result.status, let deepLink = result.deepLink else { return }
+        flow.receiveRouting(deepLink.clickEvent)
     }
 }

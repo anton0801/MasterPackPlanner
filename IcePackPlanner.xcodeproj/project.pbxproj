@@ -6,7 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8F8A369D2F3A232400A915FA /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8A369C2F3A232400A915FA /* AppsFlyerLib */; };
+		8F8A36A02F3A235700A915FA /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8A369F2F3A235700A915FA /* FirebaseDatabase */; };
+		8F8A36A22F3A235700A915FA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8A36A12F3A235700A915FA /* FirebaseMessaging */; };
+		8F8A36B12F3A23CA00A915FA /* MasterPackPlannerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8F8A36AA2F3A23C900A915FA /* MasterPackPlannerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8F8A36B92F3A23D800A915FA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8A36B82F3A23D800A915FA /* FirebaseMessaging */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		8F8A36AF2F3A23CA00A915FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9558D8742F26400800F24E01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F8A36A92F3A23C900A915FA;
+			remoteInfo = MasterPackPlannerExtension;
+		};
 		9558D88A2F26400A00F24E01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9558D8742F26400800F24E01 /* Project object */;
@@ -23,15 +38,58 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8F8A36B62F3A23CA00A915FA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8F8A36B12F3A23CA00A915FA /* MasterPackPlannerExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8F8A36AA2F3A23C900A915FA /* MasterPackPlannerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MasterPackPlannerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9558D87C2F26400800F24E01 /* IcePackPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IcePackPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9558D8892F26400A00F24E01 /* IcePackPlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcePackPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9558D8932F26400A00F24E01 /* IcePackPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcePackPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8F8A36A52F3A236600A915FA /* Exceptions for "IcePackPlanner" folder in "IcePackPlanner" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9558D87B2F26400800F24E01 /* IcePackPlanner */;
+		};
+		8F8A36B52F3A23CA00A915FA /* Exceptions for "MasterPackPlannerExtension" folder in "MasterPackPlannerExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8F8A36A92F3A23C900A915FA /* MasterPackPlannerExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		8F8A36AB2F3A23CA00A915FA /* MasterPackPlannerExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8F8A36B52F3A23CA00A915FA /* Exceptions for "MasterPackPlannerExtension" folder in "MasterPackPlannerExtension" target */,
+			);
+			path = MasterPackPlannerExtension;
+			sourceTree = "<group>";
+		};
 		9558D87E2F26400800F24E01 /* IcePackPlanner */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8F8A36A52F3A236600A915FA /* Exceptions for "IcePackPlanner" folder in "IcePackPlanner" target */,
+			);
 			path = IcePackPlanner;
 			sourceTree = "<group>";
 		};
@@ -53,10 +111,21 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8F8A36A72F3A23C900A915FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F8A36B92F3A23D800A915FA /* FirebaseMessaging in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9558D8792F26400800F24E01 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F8A36A22F3A235700A915FA /* FirebaseMessaging in Frameworks */,
+				8F8A36A02F3A235700A915FA /* FirebaseDatabase in Frameworks */,
+				8F8A369D2F3A232400A915FA /* AppsFlyerLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +146,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F8A36B72F3A23D800A915FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9558D8732F26400800F24E01 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +160,8 @@
 				9558D87E2F26400800F24E01 /* IcePackPlanner */,
 				9558D88C2F26400A00F24E01 /* IcePackPlannerTests */,
 				9558D8962F26400A00F24E01 /* IcePackPlannerUITests */,
+				8F8A36AB2F3A23CA00A915FA /* MasterPackPlannerExtension */,
+				8F8A36B72F3A23D800A915FA /* Frameworks */,
 				9558D87D2F26400800F24E01 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +172,7 @@
 				9558D87C2F26400800F24E01 /* IcePackPlanner.app */,
 				9558D8892F26400A00F24E01 /* IcePackPlannerTests.xctest */,
 				9558D8932F26400A00F24E01 /* IcePackPlannerUITests.xctest */,
+				8F8A36AA2F3A23C900A915FA /* MasterPackPlannerExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +180,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8F8A36A92F3A23C900A915FA /* MasterPackPlannerExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F8A36B22F3A23CA00A915FA /* Build configuration list for PBXNativeTarget "MasterPackPlannerExtension" */;
+			buildPhases = (
+				8F8A36A62F3A23C900A915FA /* Sources */,
+				8F8A36A72F3A23C900A915FA /* Frameworks */,
+				8F8A36A82F3A23C900A915FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8F8A36AB2F3A23CA00A915FA /* MasterPackPlannerExtension */,
+			);
+			name = MasterPackPlannerExtension;
+			packageProductDependencies = (
+				8F8A36B82F3A23D800A915FA /* FirebaseMessaging */,
+			);
+			productName = MasterPackPlannerExtension;
+			productReference = 8F8A36AA2F3A23C900A915FA /* MasterPackPlannerExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		9558D87B2F26400800F24E01 /* IcePackPlanner */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9558D89D2F26400A00F24E01 /* Build configuration list for PBXNativeTarget "IcePackPlanner" */;
@@ -108,10 +210,12 @@
 				9558D8782F26400800F24E01 /* Sources */,
 				9558D8792F26400800F24E01 /* Frameworks */,
 				9558D87A2F26400800F24E01 /* Resources */,
+				8F8A36B62F3A23CA00A915FA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8F8A36B02F3A23CA00A915FA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				9558D87E2F26400800F24E01 /* IcePackPlanner */,
@@ -119,6 +223,9 @@
 			);
 			name = IcePackPlanner;
 			packageProductDependencies = (
+				8F8A369C2F3A232400A915FA /* AppsFlyerLib */,
+				8F8A369F2F3A235700A915FA /* FirebaseDatabase */,
+				8F8A36A12F3A235700A915FA /* FirebaseMessaging */,
 			);
 			productName = IcePackPlanner;
 			productReference = 9558D87C2F26400800F24E01 /* IcePackPlanner.app */;
@@ -177,9 +284,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2620;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					8F8A36A92F3A23C900A915FA = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					9558D87B2F26400800F24E01 = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -202,6 +312,10 @@
 			);
 			mainGroup = 9558D8732F26400800F24E01;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8F8A369B2F3A232400A915FA /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				8F8A369E2F3A235700A915FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9558D87D2F26400800F24E01 /* Products */;
 			projectDirPath = "";
@@ -210,11 +324,19 @@
 				9558D87B2F26400800F24E01 /* IcePackPlanner */,
 				9558D8882F26400A00F24E01 /* IcePackPlannerTests */,
 				9558D8922F26400A00F24E01 /* IcePackPlannerUITests */,
+				8F8A36A92F3A23C900A915FA /* MasterPackPlannerExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8F8A36A82F3A23C900A915FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9558D87A2F26400800F24E01 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +361,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8F8A36A62F3A23C900A915FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9558D8782F26400800F24E01 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -263,6 +392,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8F8A36B02F3A23CA00A915FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F8A36A92F3A23C900A915FA /* MasterPackPlannerExtension */;
+			targetProxy = 8F8A36AF2F3A23CA00A915FA /* PBXContainerItemProxy */;
+		};
 		9558D88B2F26400A00F24E01 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9558D87B2F26400800F24E01 /* IcePackPlanner */;
@@ -276,6 +410,66 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		8F8A36B32F3A23CA00A915FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7X47AV9RN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MasterPackPlannerExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MasterPackPlannerExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MasterPackPlanner.MasterPackPlannerExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8F8A36B42F3A23CA00A915FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7X47AV9RN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MasterPackPlannerExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MasterPackPlannerExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MasterPackPlanner.MasterPackPlannerExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		9558D89B2F26400A00F24E01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -402,24 +596,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = IcePackPlanner/IcePackPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7X47AV9RN8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IcePackPlanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Master Pack Planner";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to use it in this app";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Master Pack Planner may collect limited technical signals from your device to help optimize planning tools, evaluate feature performance, and maintain reliable operation. This data is processed only for internal analytics and service improvement and is not used for cross-app tracking or third-party advertising.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MasterPackPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -441,24 +639,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = IcePackPlanner/IcePackPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7X47AV9RN8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IcePackPlanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Master Pack Planner";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to use it in this app";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Master Pack Planner may collect limited technical signals from your device to help optimize planning tools, evaluate feature performance, and maintain reliable operation. This data is processed only for internal analytics and service improvement and is not used for cross-app tracking or third-party advertising.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MasterPackPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -562,6 +764,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8F8A36B22F3A23CA00A915FA /* Build configuration list for PBXNativeTarget "MasterPackPlannerExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F8A36B32F3A23CA00A915FA /* Debug */,
+				8F8A36B42F3A23CA00A915FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9558D8772F26400800F24E01 /* Build configuration list for PBXProject "IcePackPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -599,6 +810,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F8A369B2F3A232400A915FA /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.17.8;
+			};
+		};
+		8F8A369E2F3A235700A915FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F8A369C2F3A232400A915FA /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F8A369B2F3A232400A915FA /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		8F8A369F2F3A235700A915FA /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F8A369E2F3A235700A915FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		8F8A36A12F3A235700A915FA /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F8A369E2F3A235700A915FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		8F8A36B82F3A23D800A915FA /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F8A369E2F3A235700A915FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9558D8742F26400800F24E01 /* Project object */;
 }

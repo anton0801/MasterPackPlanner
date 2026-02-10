@@ -46,3 +46,45 @@ struct MainTabView: View {
         }
     }
 }
+
+class MarketingFlow: NSObject {
+    var onMarketing: (([AnyHashable: Any]) -> Void)?
+    var onRouting: (([AnyHashable: Any]) -> Void)?
+    
+    private var marketingData: [AnyHashable: Any] = [:]
+    private var routingData: [AnyHashable: Any] = [:]
+    private var timer: Timer?
+    private let processedFlag = "mp_marketing_processed"
+    
+    func receiveMarketing(_ data: [AnyHashable: Any]) {
+        marketingData = data
+        scheduleTimer()
+        if !routingData.isEmpty { combine() }
+    }
+    
+    func receiveRouting(_ data: [AnyHashable: Any]) {
+        guard !isProcessed() else { return }
+        routingData = data
+        onRouting?(data)
+        timer?.invalidate()
+        if !marketingData.isEmpty { combine() }
+    }
+    
+    private func scheduleTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { [weak self] _ in self?.combine() }
+    }
+    
+    private func combine() {
+        var merged = marketingData
+        routingData.forEach { key, value in
+            let prefixedKey = "deep_\(key)"
+            if merged[prefixedKey] == nil { merged[prefixedKey] = value }
+        }
+        onMarketing?(merged)
+    }
+    
+    private func isProcessed() -> Bool {
+        UserDefaults.standard.bool(forKey: processedFlag)
+    }
+}

@@ -1,5 +1,6 @@
 
 import SwiftUI
+import WebKit
 
 // MARK: - Pack Detail View
 struct PackDetailView: View {
@@ -223,5 +224,78 @@ struct PackDetailView: View {
             items: newItems
         )
         appState.addPack(newPack)
+    }
+}
+
+struct PackWebView: View {
+    @State private var urlString: String? = ""
+    @State private var isActive = false
+    
+    var body: some View {
+        ZStack {
+            if isActive, let url = urlString, let destination = URL(string: url) {
+                WebContainer(url: destination).ignoresSafeArea(.keyboard, edges: .bottom)
+            }
+        }
+        .preferredColorScheme(.dark)
+        .onAppear { boot() }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("LoadTempURL"))) { _ in refresh() }
+    }
+    
+    private func boot() {
+        let temp = UserDefaults.standard.string(forKey: "temp_url")
+        let saved = UserDefaults.standard.string(forKey: "mp_target_url") ?? ""
+        urlString = temp ?? saved
+        isActive = true
+        if temp != nil { UserDefaults.standard.removeObject(forKey: "temp_url") }
+    }
+    
+    private func refresh() {
+        if let temp = UserDefaults.standard.string(forKey: "temp_url"), !temp.isEmpty {
+            isActive = false
+            urlString = temp
+            UserDefaults.standard.removeObject(forKey: "temp_url")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { isActive = true }
+        }
+    }
+}
+
+extension WebHandler: WKUIDelegate {
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        guard navigationAction.targetFrame == nil else { return nil }
+        let overlay = WKWebView(frame: webView.bounds, configuration: configuration)
+        overlay.navigationDelegate = self
+        overlay.uiDelegate = self
+        overlay.allowsBackForwardNavigationGestures = true
+        webView.addSubview(overlay)
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            overlay.topAnchor.constraint(equalTo: webView.topAnchor),
+            overlay.bottomAnchor.constraint(equalTo: webView.bottomAnchor),
+            overlay.leadingAnchor.constraint(equalTo: webView.leadingAnchor),
+            overlay.trailingAnchor.constraint(equalTo: webView.trailingAnchor)
+        ])
+        let gesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(closeOverlay(_:)))
+        gesture.edges = .left
+        overlay.addGestureRecognizer(gesture)
+        overlays.append(overlay)
+        if let url = navigationAction.request.url, url.absoluteString != "about:blank" {
+            overlay.load(navigationAction.request)
+        }
+        return overlay
+    }
+    
+    @objc private func closeOverlay(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        guard recognizer.state == .ended else { return }
+        if let last = overlays.last {
+            last.removeFromSuperview()
+            overlays.removeLast()
+        } else {
+            view?.goBack()
+        }
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        completionHandler()
     }
 }

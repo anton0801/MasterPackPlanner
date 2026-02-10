@@ -1,5 +1,6 @@
 
 import SwiftUI
+import WebKit
 
 // MARK: - Add Pack View
 struct AddPackView: View {
@@ -83,3 +84,68 @@ struct AddPackView: View {
         }
     }
 }
+
+struct WebContainer: UIViewRepresentable {
+    let url: URL
+    
+    func makeCoordinator() -> WebHandler { WebHandler() }
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let view = createWebView(handler: context.coordinator)
+        context.coordinator.view = view
+        context.coordinator.open(url, in: view)
+        Task { await context.coordinator.loadCookies(in: view) }
+        return view
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {}
+    
+    private func createWebView(handler: WebHandler) -> WKWebView {
+        let config = WKWebViewConfiguration()
+        config.processPool = WKProcessPool()
+        
+        let prefs = WKPreferences()
+        prefs.javaScriptEnabled = true
+        prefs.javaScriptCanOpenWindowsAutomatically = true
+        config.preferences = prefs
+        
+        let controller = WKUserContentController()
+        let script = WKUserScript(
+            source: """
+            (function() {
+                const m = document.createElement('meta');
+                m.name = 'viewport';
+                m.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+                document.head.appendChild(m);
+                const s = document.createElement('style');
+                s.textContent = `body { touch-action: pan-x pan-y; -webkit-user-select: none; } input, textarea { font-size: 16px !important; }`;
+                document.head.appendChild(s);
+                document.addEventListener('gesturestart', e => e.preventDefault());
+                document.addEventListener('gesturechange', e => e.preventDefault());
+            })();
+            """,
+            injectionTime: .atDocumentEnd,
+            forMainFrameOnly: false
+        )
+        controller.addUserScript(script)
+        config.userContentController = controller
+        config.allowsInlineMediaPlayback = true
+        config.mediaTypesRequiringUserActionForPlayback = []
+        
+        let pagePrefs = WKWebpagePreferences()
+        pagePrefs.allowsContentJavaScript = true
+        config.defaultWebpagePreferences = pagePrefs
+        
+        let view = WKWebView(frame: .zero, configuration: config)
+        view.scrollView.minimumZoomScale = 1.0
+        view.scrollView.maximumZoomScale = 1.0
+        view.scrollView.bounces = false
+        view.scrollView.bouncesZoom = false
+        view.allowsBackForwardNavigationGestures = true
+        view.scrollView.contentInsetAdjustmentBehavior = .never
+        view.navigationDelegate = handler
+        view.uiDelegate = handler
+        return view
+    }
+}
+
