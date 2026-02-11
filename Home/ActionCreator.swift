@@ -190,8 +190,6 @@ final class ActionCreator {
         dispatcher.dispatchAction(.notificationPostponed)
     }
     
-    // MARK: - Network
-    
     private func setupNetworkMonitoring() {
         networkMonitor.pathUpdateHandler = { [weak self] path in
             Task { @MainActor [weak self] in

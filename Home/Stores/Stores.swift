@@ -98,6 +98,7 @@ final class UIStore: ObservableObject {
             
         case .notificationPostponed:
             showNotificationModal = false
+            navigateToWeb = true
             
         case .networkOffline:
             showOfflineModal = true
